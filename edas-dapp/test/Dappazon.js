@@ -5,27 +5,38 @@ const tokens = (n) => {
 }
 
 describe("Dappazon", () => {
-  let dappazon;
+  let dappazon
   let deployer , buyer
 
   beforeEach(async () => {
-    //setup account
-    [deployer, buyer] = await ethers.getSigners() //getting fake accounts
-    console.log(deployer.address, buyer.address)
-    console.log((await ethers.getSigners()).length)
+
+    //setup accounts 
+    [deployer, buyer] = await ethers.getSigners() 
+    /* .getSigners() is used for getting fake accounts in form of array
+      first 2 accounts will be deployer and buyer*/
+  
+    console.log(deployer.address, buyer.address) //fetch addresses of 2
+    console.log((await ethers.getSigners()).length) 
+
     //deploy contract
     const Dappazon = await ethers.getContractFactory("Dappazon")
     dappazon = await Dappazon.deploy()
-
   })
-
+  
+  //we actually fetch a copy of smart contract with ether js library
   describe("Deployment", () => {
-    it("Sets the owner", async() =>{
-      expect(await dappazon.owner()).to.equal(deployer.address)
+
+    it('sets the owner', async () => {
+      expect(await dappazon.owner()).to.equal("deployer.address")
     })
-    
-    
+
+    it('has a name', async () =>{ 
+      const name = await dappazon.name()
+      expect(name).to.equal("Dappazon")
+    })
   })
+  
+
 
   
 })
