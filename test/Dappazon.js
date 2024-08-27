@@ -110,5 +110,39 @@ describe("Dappazon", function() {
     })
     
   });
+
+  describe("Withdrawing", function(){
+    let balanceBefore
+
+    beforeEach(async() => {
+      //list item
+      transaction = await dappazon.connect(deployer).list(ID, NAME , CATEGORY , IMAGE , COST , RATING , STOCK);
+      await transaction.wait();
+
+      //buy item
+      transaction = await dappazon.connect(buyer).buy(ID , {value : COST});
+      await transaction.wait();
+
+      //get deployer balance before
+      balanceBefore = await ethers.provider.getBalance(deployer.address);
+      console.log(balanceBefore)
+
+      //withdraw 
+      transaction = await dappazon.connect(deployer).withdraw()
+      await transaction.wait();
+
+    })
+
+    it('Updates owner balance', async() => {
+      const balanceAfter = await ethers.provider.getBalance(deployer.address);
+      console.log(balanceAfter);
+      expect(balanceAfter).to.be.greaterThan(balanceBefore);
+    })
+
+    it('Updates the contract balance', async () => {
+      const result = await ethers.provider.getBalance(dappazon.target)
+      expect(result).to.equal(0)
+    })
+  });
 });
 

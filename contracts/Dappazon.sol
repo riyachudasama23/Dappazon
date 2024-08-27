@@ -93,5 +93,10 @@ contract Dappazon {
         //emit event
         emit Buy(msg.sender, orderCount[msg.sender], item.id);
     }
+
     //withdraw funds
+    function withdraw() public onlyOwner {
+        (bool success, ) = owner.call{value: address(this).balance}("");
+        require(success);
+    }
 }
