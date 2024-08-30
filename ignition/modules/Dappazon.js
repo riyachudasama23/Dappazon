@@ -9,6 +9,10 @@ module.exports = buildModule("Dappazon", (m) => {
   // Deploy the Dappazon contract
   const dappazon = m.contract("Dappazon");
 
+  //deployed contract address
+  console.log(`Dappazon Contract Address: ${dappazon.address}`);
+  // 0x5FbDB2315678afecb367f032d93F642f64180aa3
+
   // List items after deployment
   items.forEach((item, index) => {
     m.call(dappazon, "list", [
