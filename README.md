@@ -27,7 +27,7 @@ Dappazon is a decentralized e-commerce platform leveraging blockchain technology
 
 ### 5. Run deployment script
 In a separate terminal execute:
-`$ npx hardhat run ./scripts/deploy.js --network localhost`
+`$ npx hardhat ignition deploy ignition/modules/Dappazon.js --network localhost`
 
 ### 6. Start frontend
-`$ npm run start`
+`$ npm start`
