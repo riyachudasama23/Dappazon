@@ -1,4 +1,4 @@
-#Dappazon
+# Dappazon
 
 Dappazon is a decentralized e-commerce platform leveraging blockchain technology to enhance security, transparency, and efficiency in online transactions. Unlike centralized platforms, Dappazon eliminates single-entity control, fostering trust between buyers and sellers through smart contracts. This reduces fees, speeds up transactions, and minimizes reliance on intermediaries. Users also gain greater control over their data, ensuring a more ethical and secure alternative to traditional platforms. Dappazon aims to revolutionize e-commerce by creating a transparent, fair, and decentralized marketplace.
 
